@@ -37,6 +37,8 @@ public class Lab3 {
         list.add(new PollardRhoOneMethod(new BigInteger("1728239")));
         list.add(new PollardRhoOneMethod(new BigInteger("1557697")));
 
+        //list.add(new SquareSieveMethod(new BigInteger("8931721")));
+
         PerformanceTest pf = new PerformanceTest();
         pf.setData(list);
         pf.setFileName("Lab3Report");

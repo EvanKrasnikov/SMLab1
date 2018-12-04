@@ -14,7 +14,7 @@ public abstract class AbstractFactorization implements Callable<String> {
 
     private BigInteger q, r;
 
-    int iteration = 0;
+    int iteration = 1;
     BigInteger val;
     StringBuilder sb = new StringBuilder();
 

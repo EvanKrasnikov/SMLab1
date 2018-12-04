@@ -72,6 +72,7 @@ public class PollardRhoMethod extends AbstractFactorization{
     private void print() {
         sb.append("Computation using ").append(getClass().getSimpleName())
                 .append("\nCompression function = x*x + 5\n")
+                .append("\nValue = ").append(val)
                 .append("C = ").append(c).append("\n");
 
         for (int i = 1; i < 10; i++) {
