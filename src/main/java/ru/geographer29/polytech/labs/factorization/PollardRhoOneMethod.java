@@ -29,7 +29,7 @@ public class PollardRhoOneMethod extends AbstractFactorization {
         else if (r.compareTo(minusOne) == 0)
             sb.append("Factor has not found\n");
         else
-            sb.append("Checking ").append(val).append(" = ")
+            sb.append("Factor is ").append(r).append("\nChecking ").append(val).append(" = ")
                     .append(r).append(" * ").append(val.divide(r)).append("\n");
 
         printTime();
@@ -37,7 +37,7 @@ public class PollardRhoOneMethod extends AbstractFactorization {
     }
 
     private BigInteger rhoOne() {
-        fillInFactorBase(BigInteger.valueOf(5));
+        fillInFactorBase(new BigInteger("100000000"));
 
         for (;;) {
             if (System.currentTimeMillis() - launchTime > 3600000)

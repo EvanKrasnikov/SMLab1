@@ -23,6 +23,11 @@ public class PollardRhoMethod extends AbstractFactorization{
             sb.append("Factor has not computed, planned termination\n");
         if (r.compareTo(minusOne) == 0)
             sb.append("Factor has not found\n");
+
+
+        sb.append("Checking ").append(val).append(" = ")
+                .append(r).append(" * ").append(val.divide(r)).append("\n");
+
         return sb.toString();
     }
 
@@ -46,7 +51,7 @@ public class PollardRhoMethod extends AbstractFactorization{
 
             d = gcd(a.subtract(b), val);
 
-            if (iteration < 5) {
+            if (iteration < 6) {
                 as[iteration] = a;
                 bs[iteration] = b;
                 gcds[iteration] = d;
@@ -73,7 +78,7 @@ public class PollardRhoMethod extends AbstractFactorization{
         sb.append("Computation using ").append(getClass().getSimpleName())
                 .append("\nCompression function = x*x + 5\n")
                 .append("\nValue = ").append(val)
-                .append("C = ").append(c).append("\n");
+                .append("\nC = ").append(c).append("\n");
 
         for (int i = 1; i < 10; i++) {
             if (as[i] == null)
