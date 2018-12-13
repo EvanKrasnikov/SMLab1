@@ -67,12 +67,12 @@ public class CroppedReminderExtendedEuclidean extends AbstractEuclidean {
     }
 
     private void printRoots() {
-        for (int j = 0; j < i - 1; j++)
+        for (int j = 0; j < i + 1; j++)
             sb
                     .append("Iteration #").append(j)
-                    .append(" r = ").append(r[j + 2])
-                    .append(" x = ").append(x[j + 2])
-                    .append(" y = ").append(y[j + 2])
+                    .append(" r = ").append(r[j])
+                    .append(" x = ").append(x[j])
+                    .append(" y = ").append(y[j])
                     .append("\n");
 
     }
