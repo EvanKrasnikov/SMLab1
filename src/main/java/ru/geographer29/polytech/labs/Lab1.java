@@ -26,12 +26,14 @@ public class Lab1 {
 
     public static void main( String[] args ) {
         List<Callable<String>> list = new ArrayList<>();
+        /*
         list.add(new ExtendedEuclidean(VAL1, VAL2));
         list.add(new ExtendedEuclidean(VAL3, VAL4));
         list.add(new ExtendedEuclidean(VAL5, VAL6));
         list.add(new ExtendedBinaryEuclidean(VAL1, VAL2));
         list.add(new ExtendedBinaryEuclidean(VAL3, VAL4));
         list.add(new ExtendedBinaryEuclidean(VAL5, VAL6));
+        */
         list.add(new CroppedReminderExtendedEuclidean(VAL1, VAL2));
         list.add(new CroppedReminderExtendedEuclidean(VAL3, VAL4));
         list.add(new CroppedReminderExtendedEuclidean(VAL5, VAL6));
@@ -49,6 +51,8 @@ public class Lab1 {
         //list.add(new ExtendedBinaryEuclidean(new BigInteger("98"), new BigInteger("21")));
         //list.add(new ExtendedBinaryEuclidean(new BigInteger("42"), new BigInteger("12")));
         //list.add(new ExtendedBinaryEuclidean(new BigInteger("112"), new BigInteger("21")));
+
+        //list.add(new CroppedReminderExtendedEuclidean(new BigInteger("698431"), new BigInteger("453899")));
 
 
         PerformanceTest pf = new PerformanceTest();
