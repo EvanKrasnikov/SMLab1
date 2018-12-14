@@ -7,6 +7,7 @@ public class PollardRhoLogarithm extends AbsractLogarythm {
     private int[] iters = new int[10];
 
     private BigInteger
+            ten = new BigInteger("10"),
             masC[] = new BigInteger[10],
             masD[] = new BigInteger[10],
             masLC[] = new BigInteger[10],
