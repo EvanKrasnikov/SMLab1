@@ -4,16 +4,17 @@ import java.math.BigInteger;
 
 public class PollardRhoLogarithm extends AbsractLogarythm {
     private long launchTime = System.currentTimeMillis();
-    private int[] iters = new int[10];
 
     private BigInteger
-            ten = new BigInteger("10"),
+            five = BigInteger.valueOf(5),
+            ten = BigInteger.valueOf(10),
             masC[] = new BigInteger[10],
             masD[] = new BigInteger[10],
             masLC[] = new BigInteger[10],
             masLCX[] = new BigInteger[10],
             masLD[] = new BigInteger[10],
             masLDX[] = new BigInteger[10],
+            iters[] = new BigInteger[10],
             u = two,
             v = two,
             nxc = u,
@@ -21,7 +22,8 @@ public class PollardRhoLogarithm extends AbsractLogarythm {
             nxd = u,
             xd = v ,
             c = (a.modPow(u, p).multiply(b.modPow(v, p))).mod(p),
-            d = c;
+            d = c,
+            iter = one;
 
     public PollardRhoLogarithm(BigInteger a, BigInteger b, BigInteger p, BigInteger q) {
         super(a, b, p, q);
@@ -33,7 +35,8 @@ public class PollardRhoLogarithm extends AbsractLogarythm {
                 .append("\nA = ").append(a)
                 .append("\nB = ").append(b)
                 .append("\nP = ").append(p)
-                .append("\nQ = ").append(r);
+                .append("\nQ = ").append(r)
+                .append("\n");
 
         boolean result = rhoLogarithm();
         if (result){
@@ -64,7 +67,7 @@ public class PollardRhoLogarithm extends AbsractLogarythm {
 
             sb
                     .append("Can't solve the logarithm\n")
-                    .append("Values:");
+                    .append("Values:\n");
 
             for (int i = 0; i < 10; i++)
                 sb
@@ -80,7 +83,7 @@ public class PollardRhoLogarithm extends AbsractLogarythm {
 
         sb
                 .append("Total iterations = ")
-                .append(iteration)
+                .append(iter)
                 .append("\nComputation time = ")
                 .append(System.currentTimeMillis() - launchTime)
                 .append(" ms\n");
@@ -145,24 +148,24 @@ public class PollardRhoLogarithm extends AbsractLogarythm {
             d = f(d, 2);
             d = f(d, 2);
 
-            if (iteration < 10) {
-                masC[iteration] = c;
-                masD[iteration] = d;
-                masLC[iteration] = nxc;
-                masLCX[iteration] = xc;
-                masLD[iteration] = nxd;
-                masLDX[iteration] = xd;
-                iters[iteration] = iteration;
+            if (iter.compareTo(ten) == -1) {
+                masC[iter.intValue()] = c;
+                masD[iter.intValue()] = d;
+                masLC[iter.intValue()] = nxc;
+                masLCX[iter.intValue()] = xc;
+                masLD[iter.intValue()] = nxd;
+                masLDX[iter.intValue()] = xd;
+                iters[iter.intValue()] = iter;
             } else {
-                masC[iteration % 5 + 5] = c;
-                masD[iteration % 5 + 5] = d;
-                masLC[iteration % 5 + 5] = nxc;
-                masLCX[iteration % 5 + 5] = xc;
-                masLD[iteration % 5 + 5] = nxd;
-                masLDX[iteration % 5 + 5] = xd;
-                iters[iteration % 5 + 5] = iteration;
+                masC[iter.remainder(five).add(five).intValue()] = c;
+                masD[iter.remainder(five).add(five).intValue()] = d;
+                masLC[iter.remainder(five).add(five).intValue()] = nxc;
+                masLCX[iter.remainder(five).add(five).intValue()] = xc;
+                masLD[iter.remainder(five).add(five).intValue()] = nxd;
+                masLDX[iter.remainder(five).add(five).intValue()] = xd;
+                iters[iter.remainder(five).add(five).intValue()] = iter;
             }
-            iteration++;
+            iter = iter.add(one);
 
             if (System.currentTimeMillis() - launchTime > 7200000)
                 return false;
